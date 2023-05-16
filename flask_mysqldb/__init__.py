@@ -1,4 +1,4 @@
-import mysql.connector
+import mysql.connector as MySQLdb
 from flask import _app_ctx_stack, current_app
 
 
