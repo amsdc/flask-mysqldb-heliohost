@@ -1,5 +1,4 @@
-import MySQLdb
-from MySQLdb import cursors
+import mysql.connector
 from flask import _app_ctx_stack, current_app
 
 
@@ -30,7 +29,7 @@ class MySQL(object):
         app.config.setdefault("MYSQL_USE_UNICODE", True)
         app.config.setdefault("MYSQL_CHARSET", "utf8")
         app.config.setdefault("MYSQL_SQL_MODE", None)
-        app.config.setdefault("MYSQL_CURSORCLASS", None)
+        # app.config.setdefault("MYSQL_CURSORCLASS", None)
         app.config.setdefault("MYSQL_AUTOCOMMIT", False)
         app.config.setdefault("MYSQL_CUSTOM_OPTIONS", None)
 
@@ -74,10 +73,10 @@ class MySQL(object):
         if current_app.config["MYSQL_SQL_MODE"]:
             kwargs["sql_mode"] = current_app.config["MYSQL_SQL_MODE"]
 
-        if current_app.config["MYSQL_CURSORCLASS"]:
+        """if current_app.config["MYSQL_CURSORCLASS"]:
             kwargs["cursorclass"] = getattr(
                 cursors, current_app.config["MYSQL_CURSORCLASS"]
-            )
+            )"""
 
         if current_app.config["MYSQL_AUTOCOMMIT"]:
             kwargs["autocommit"] = current_app.config["MYSQL_AUTOCOMMIT"]
